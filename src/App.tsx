@@ -7,7 +7,7 @@ import {Button} from '@/components/ui/button';
 
 export const App = () => {
   return (
-    <div className="App">
+    <div className="h-[300vh]">
       <Button>Hello World</Button>
     </div>
   );
