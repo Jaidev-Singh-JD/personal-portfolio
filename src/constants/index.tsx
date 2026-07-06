@@ -8,6 +8,8 @@
  */
 import type {
   LinksType,
+  StatsType,
+  ProjectType
 } from '@/types';
 
 /**
@@ -70,7 +72,51 @@ const socialLinks: LinksType[] = [
   },
 ];
 
+const statsData: StatsType[] = [
+  {
+    number: '10+',
+    label: 'Happy Clients',
+  },
+  {
+    number: '03+',
+    label: 'Years Of Experience',
+  },
+  {
+    number: '15+',
+    label: 'Projects Done',
+  },
+];
+
+const projectsData: ProjectType[] = [
+  {
+    imgSrc: '/images/project-ph-1.jpeg',
+    title: 'Todo App',
+    tags: ['API', 'Development'],
+    projectLink: 'https://musify-5al0.onrender.com/',
+  },
+  {
+    imgSrc: '/images/project-ph-2.jpeg',
+    title: 'File Manager App',
+    tags: ['API', 'Development'],
+    projectLink: 'https://musify-5al0.onrender.com/',
+  },
+  {
+    imgSrc: '/images/project-ph-3.jpeg',
+    title: 'Weather App',
+    tags: ['API', 'Development'],
+    projectLink: 'https://musify-5al0.onrender.com/',
+  },
+  {
+    imgSrc: '/images/project-ph-4.jpeg',
+    title: 'Student Management App',
+    tags: ['API', 'Development'],
+    projectLink: 'https://musify-5al0.onrender.com/',
+  },
+];
+
 export {
   socialLinks,
   navLinks,
+  statsData,
+  projectsData
 };
