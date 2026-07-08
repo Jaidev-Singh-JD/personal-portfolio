@@ -6,6 +6,7 @@
 /**
  * Node modules 
  */
+import { ChatBot } from './components/Chatbot';
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
@@ -29,6 +30,7 @@ createRoot(document.getElementById('root')!).render(
       <FloatingMenu/>
       <Profile/>
       <App />
+      <ChatBot/>
     </div>
   </StrictMode>,
 )
