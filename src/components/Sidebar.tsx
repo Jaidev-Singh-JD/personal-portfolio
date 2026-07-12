@@ -11,7 +11,7 @@ import { useState } from 'react';
 /**
  * Custom Modules
  */
-import {cn} from '@/lib/utils';
+import { cn } from '@/lib/utils';
 
 /**
  * Components
@@ -35,7 +35,7 @@ import { MenuIcon } from 'lucide-react';
 import { navLinks, socialLinks } from '@/constants';
 
 export const Sidebar = () => {
-  const [active, setActive] = useState('#home');
+  const [active, setActive] = useState('#hero');
 
   return (
     <Sheet>
@@ -71,19 +71,23 @@ export const Sidebar = () => {
             );
           })}
         </nav>
-        <div className="mt-30">
-            <p className="pb-2">Socials</p>
+        <div className='mt-30'>
+          <p className='pb-2'>Socials</p>
 
-            <div className="flex gap-3 text-neutral-500">
-                {socialLinks.map((social,i)=>{
-                    const Icon = social.icon;
-                    return(
-                        <a key={i} href={social.link} className="hover:text-primary border-2 border-neutral-500 p-2 rounded-full hover:border-primary transition duration-200">
-                            <Icon className='size-4' />
-                        </a>
-                    )
-                })}
-            </div>
+          <div className='flex gap-3 text-neutral-500'>
+            {socialLinks.map((social, i) => {
+              const Icon = social.icon;
+              return (
+                <a
+                  key={i}
+                  href={social.link}
+                  className='hover:text-primary border-2 border-neutral-500 p-2 rounded-full hover:border-primary transition duration-200'
+                >
+                  <Icon className='size-4' />
+                </a>
+              );
+            })}
+          </div>
         </div>
       </SheetContent>
     </Sheet>

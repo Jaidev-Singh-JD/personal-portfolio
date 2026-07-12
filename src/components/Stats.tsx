@@ -26,16 +26,18 @@ export const Stats = () => {
       variants={staggerContainer(0.6)}
       className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mt-20'
     >
-        {statsData.map((stats, i) => (
-          <motion.div
-            key={i}
-            variants={fadeUp}
-            className='border border-neutral-700 rounded-xl flex justify-center items-center flex-col py-6'
-          >
-            <p className='text-4xl capitalize font-bold lining-nums'>{stats.number}</p>
-            <p className=''>{stats.label}</p>
-          </motion.div>
-        ))}
+      {statsData.map((stats, i) => (
+        <motion.div
+          key={i}
+          variants={fadeUp}
+          className='border border-neutral-700 rounded-xl flex justify-center items-center flex-col py-6'
+        >
+          <p className='text-4xl capitalize font-bold lining-nums'>
+            {stats.number}
+          </p>
+          <p className=''>{stats.label}</p>
+        </motion.div>
+      ))}
     </motion.section>
   );
 };

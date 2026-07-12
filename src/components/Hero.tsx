@@ -6,6 +6,12 @@
  * Node modules
  */
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
+
+/**
+ * Assets
+ */
+import { Eye } from 'lucide-react';
 
 /**
  * Custom modules
@@ -16,13 +22,14 @@ import { fadeUp, staggerContainer } from '@/lib/animation';
  * Components
  */
 import { Button } from '@/components/ui/button';
+import { RoleTypewriter } from '@/components/RoleTypewriter';
 
 /**
  * Assets
  */
 import { SparkleIcon } from 'lucide-react';
 
-export const Home = () => {
+export const Hero = () => {
   return (
     <motion.section
       initial='hidden'
@@ -30,7 +37,7 @@ export const Home = () => {
       viewport={{ once: true, amount: 0.3 }}
       variants={staggerContainer(0)}
       className='pt-20'
-      id='home'
+      id='hero'
     >
       <motion.p
         variants={fadeUp}
@@ -44,8 +51,8 @@ export const Home = () => {
         variants={fadeUp}
         className='text-4xl md:text-5xl lg:text-6xl font-semibold capitalize mt-2 max-w-3xl md:leading-16'
       >
-        I'm <span className='text-primary'></span> Frontend Developer, I build
-        beautiful and functional user interfaces.
+        I'm <RoleTypewriter commaSeparator={true} /> focused on building clean,
+        maintainable, high-quality software.
       </motion.h1>
 
       <motion.div
@@ -55,7 +62,15 @@ export const Home = () => {
         <Button asChild>
           <a href='#projects'>View Projects</a>
         </Button>
-        <Button variant='outline'>Download CV</Button>
+        <Button
+          variant='outline'
+          asChild
+        >
+          <Link to='/resume'>
+            <Eye className='mr-2 size-4' />
+            View CV
+          </Link>
+        </Button>
       </motion.div>
     </motion.section>
   );

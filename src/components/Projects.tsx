@@ -16,12 +16,12 @@ import { staggerContainer } from '@/lib/animation';
  * Components
  */
 import { SectionHeader } from '@/components/SectionHeader';
-import { ProjectCard } from '@/components/ProjectCard';
+import { ProjectDetailCard } from '@/components/ProjectDetailCard';
 
 /**
  * Constants
  */
-import { projectsData } from '@/constants';
+import { projectsDetailData } from '@/constants/index';
 
 export const Projects = () => {
   return (
@@ -32,7 +32,7 @@ export const Projects = () => {
     >
       <SectionHeader
         subtitle='Projects'
-        title='My featured Projects'
+        title='My Featured Projects'
       />
 
       <motion.div
@@ -42,13 +42,10 @@ export const Projects = () => {
         viewport={{ once: true, amount: 0.3 }}
         variants={staggerContainer(0.5)}
       >
-        {projectsData.map((project, i) => (
-          <ProjectCard
+        {projectsDetailData.map((project, i) => (
+          <ProjectDetailCard
             key={i}
-            imgSrc={project.imgSrc}
-            projectLink={project.projectLink}
-            tags={project.tags}
-            title={project.title}
+            {...project}
           />
         ))}
       </motion.div>

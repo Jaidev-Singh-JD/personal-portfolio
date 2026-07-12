@@ -10,7 +10,7 @@ import { motion } from 'motion/react';
 /**
  * Custom modules
  */
-import { fadeUp} from '@/lib/animation';
+import { fadeUp } from '@/lib/animation';
 
 /**
  * Assets

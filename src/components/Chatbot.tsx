@@ -29,7 +29,12 @@ import { Input } from '@/components/ui/input';
 /**
  * Assets
  */
-import { MessageCircleIcon, SendIcon, SparkleIcon, BotIcon } from 'lucide-react';
+import {
+  MessageCircleIcon,
+  SendIcon,
+  SparkleIcon,
+  BotIcon,
+} from 'lucide-react';
 
 /**
  * Types
@@ -44,7 +49,8 @@ const initialMessages: Message[] = [
   {
     id: 1,
     role: 'bot',
-    content: "Hi, I'm Jaidev's assistant. Ask me anything about his work, projects, or experience.",
+    content:
+      "Hi, I'm Jaidev's assistant. Ask me anything about his work, projects, or experience.",
   },
 ];
 
@@ -79,7 +85,8 @@ export const ChatBot = () => {
         {
           id: Date.now() + 1,
           role: 'bot',
-          content: "This is a UI preview — will connect this up to an API to make me actually respond.",
+          content:
+            'This is a UI preview — will connect this up to an API to make me actually respond.',
         },
       ]);
     }, 600);
@@ -93,7 +100,10 @@ export const ChatBot = () => {
   };
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
+    <Sheet
+      open={open}
+      onOpenChange={setOpen}
+    >
       <SheetTrigger asChild>
         <motion.button
           whileHover={{ scale: 1.08 }}
@@ -115,7 +125,9 @@ export const ChatBot = () => {
             <BotIcon className='size-4 text-primary' />
           </div>
           <div>
-            <SheetTitle className='text-sm font-semibold leading-none'>Ask Assistant</SheetTitle>
+            <SheetTitle className='text-sm font-semibold leading-none'>
+              Ask Assistant
+            </SheetTitle>
             <p className='text-xs text-neutral-400 mt-1 flex items-center gap-1'>
               <SparkleIcon size={11} /> Always happy to help
             </p>

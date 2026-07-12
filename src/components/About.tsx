@@ -30,27 +30,32 @@ export const About = () => {
     >
       <SectionHeader
         subtitle='About'
-        title='Transforming complexity into effortless design'
+        title='Building interfaces that make complex data simple'
       ></SectionHeader>
       <motion.p
         variants={fadeUp}
         className='mt-4 text-neutral-300'
       >
-        I'm a Frontend Engineer with 3+ years of experience specializing in
-        building scalable, data-driven web applications. At Omnicom Media Group,
-        I owned and developed modules across five enterprise products i.e.
-        Geolift, MMM (Marketing Mix Modeling), OVI(Omni Video Intelligence),
-        Meridian ,Social Kit — spanning geo-experimentation, YouTube targeting,
-        marketing mix modeling experimentation Campaign Spend, and Meta advertising. My core stack is Vue.js,
-        React, TypeScript, and Lit.dev, with a strong focus on component
-        architecture, performance, and clean code. I enjoy turning complex data
-        and business logic into interfaces that feel simple and intuitive to
-        use.
+        Frontend Engineer with 3+ years of experience building enterprise AdTech
+        applications used by global marketing teams. I turn messy backend logic
+        into interfaces that actually make sense - geo-experimentation tools,
+        marketing analytics dashboards, campaign management platforms.
+        Enterprise AdTech products most people never see, but internal teams
+        rely on every day. I work across the frontend stack and I'm building out
+        real backend fundamentals too, so I can speak both sides instead of just
+        handing off. I care about the parts that don't show up in a screenshot -
+        solid test coverage, clean component boundaries, code the next person
+        won't have to fight with.I actively incorporate AI into my daily
+        workflow to improve productivity, accelerate development, enhance code
+        quality, and explore better engineering solutions.
       </motion.p>
       <motion.div
-      variants={fadeUp}
-      transition={{delay:0.2}}>
-        <Button className='mt-5'>Contact Me</Button>
+        variants={fadeUp}
+        transition={{ delay: 0.2 }}
+      >
+        <Button className='mt-5'>
+          <a href='#contact'>Contact Me</a>
+        </Button>
       </motion.div>
     </motion.section>
   );
