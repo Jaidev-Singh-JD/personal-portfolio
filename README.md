@@ -1,73 +1,133 @@
-# React + TypeScript + Vite
+﻿# Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + TypeScript + Vite portfolio project with Tailwind CSS, animated UI, a contact form using EmailJS, an Anthropic chat assistant endpoint, and pre-commit formatting/linting.
 
-Currently, two official plugins are available:
+## Project Summary
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This portfolio website includes:
 
-## React Compiler
+- Hero and introduction sections
+- Project showcase and achievements
+- Skills, career timeline, and testimonials
+- Contact form with validation and EmailJS-based email sending
+- Smooth scrolling using `lenis`
+- AI assistant endpoint in `api/chat.ts`
+- Husky + lint-staged pre-commit hooks for formatting and linting
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+### Contact form
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Built with `react-hook-form`
+- Client-side validation for name, email, and message
+- Honeypot spam protection
+- Cooldown behavior to prevent repeated submissions
+- Uses environment variables for EmailJS integration
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Smooth scrolling
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Implemented via `Lenis` in `src/App.tsx`
+- Adds fluid scrolling across the portfolio sections
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+### AI chat endpoint
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Implemented as a Vercel serverless function in `api/chat.ts`
+- Uses `@anthropic-ai/sdk` to stream assistant responses
+- Requires `ANTHROPIC_API_KEY` in environment variables
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+### Pre-commit quality checks
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+- Uses `husky` to install Git hooks
+- Uses `lint-staged` to run formatting and lint fixes on staged files
+- Files covered by lint-staged:
+  - `*.{js,jsx,ts,tsx}` => `prettier --write`, `eslint --fix`
+  - `*.{json,css,md}` => `prettier --write`
+
+## Tech Stack
+
+- React 19
+- TypeScript 6
+- Vite
+- Tailwind CSS 4
+- ESLint
+- Prettier
+- EmailJS
+- Anthropic AI
+- Husky
+- lint-staged
+- Lenis
+- motion/react
+
+## Repo Structure
+
+- `src/App.tsx` — root application layout and smooth scroll setup
+- `src/components/` — page sections and reusable UI components
+- `api/chat.ts` — Vercel serverless AI assistant endpoint
+- `.husky/pre-commit` — Git pre-commit hook
+- `package.json` — scripts, dependencies, lint-staged config
+- `vite.config.ts` — path aliases and plugins
+
+## Setup
+
+1. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+2. Create environment file:
+
+   ```bash
+   cp .env.example .env.local
+   ```
+
+3. Add required environment variables:
+
+   ```bash
+   VITE_EMAILJS_SERVICE_ID=
+   VITE_EMAILJS_TEMPLATE_ID=
+   VITE_EMAILJS_PUBLIC_KEY=
+   ANTHROPIC_API_KEY=
+   ```
+
+4. Start development mode:
+   ```bash
+   npm run dev
+   ```
+
+## Available Scripts
+
+- `npm run dev` — start local development server
+- `npm run build` — compile TypeScript and build Vite app
+- `npm run preview` — preview production build locally
+- `npm run lint` — run ESLint across the repo
+- `npm run lint:fix` — run ESLint and auto-fix issues
+- `npm run format` — format files with Prettier
+- `npm run format:check` — verify Prettier formatting
+- `npm run prepare` — install Husky hooks
+
+## Husky + lint-staged
+
+This repo uses Husky and lint-staged to enforce formatting and linting on staged files before commit.
+
+- `.husky/pre-commit` runs `npx lint-staged`
+- `lint-staged` is configured in `package.json`
+- This ensures only formatted and lint-fixed staged files are committed
+
+## Deployment
+
+The project is ready for deployment on Vercel.
+
+- Vercel detects the Vite app and serverless function in `api/`
+- Set environment variables in the Vercel dashboard
+- Build command: `npm run build`
+
+## Notes
+
+- Keep sensitive keys out of source control in `.env.local`
+- Run `npm run format` to format the entire repo
+- If you want commit-only checks without autofix, update the lint-staged commands accordingly
+
+## Contact
+
+For improvements or updates, edit the repo or open an issue.
