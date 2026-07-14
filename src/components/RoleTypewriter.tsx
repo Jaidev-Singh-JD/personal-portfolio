@@ -20,11 +20,10 @@ type RoleTypewriterProps = {
 
 const DEFAULT_ROLES = [
   'Frontend Engineer',
-  'Micro-Frontend Expert',
-  'UI Systems Designer',
-  'React Specialist',
-  'AdTech Platform Expert',
   'Component Architect',
+  'React Developer',
+  'UI Engineer',
+  'AdTech Specialist',
 ];
 
 export const RoleTypewriter = ({

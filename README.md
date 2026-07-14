@@ -1,73 +1,68 @@
-﻿# Personal Portfolio
+﻿# Jaidev Singh — Personal Portfolio
 
-A React + TypeScript + Vite portfolio project with Tailwind CSS, animated UI, a contact form using EmailJS, an Anthropic chat assistant endpoint, and pre-commit formatting/linting.
+This repository contains the personal portfolio website for Jaidev Singh, built with React, TypeScript, Vite, and Tailwind CSS. The site is deployed on Vercel at https://jaidevsingh.in and showcases experience, projects, skills, testimonials, and a contact flow.
 
-## Project Summary
+## Overview
 
-This portfolio website includes:
+The portfolio includes:
 
-- Hero and introduction sections
-- Project showcase and achievements
-- Skills, career timeline, and testimonials
-- Contact form with validation and EmailJS-based email sending
-- Smooth scrolling using `lenis`
-- AI assistant endpoint in `api/chat.ts`
-- Husky + lint-staged pre-commit hooks for formatting and linting
+- A polished animated hero and introduction section
+- About, experience, skills, and achievement sections
+- A featured projects showcase
+- Testimonials and contact details
+- A working contact form powered by EmailJS
+- An AI assistant endpoint hosted as a Vercel serverless function
 
 ## Features
 
+### Portfolio experience
+
+- Responsive single-page experience with smooth section transitions
+- Motion-based animations and scroll-driven effects
+- Clean reusable UI components and consistent design system styling
+
 ### Contact form
 
-- Built with `react-hook-form`
-- Client-side validation for name, email, and message
-- Honeypot spam protection
-- Cooldown behavior to prevent repeated submissions
-- Uses environment variables for EmailJS integration
+- Built with React Hook Form and EmailJS
+- Client-side validation for required fields
+- Honeypot spam protection and submission cooldown behavior
+- Requires environment variables for EmailJS configuration
 
-### Smooth scrolling
+### AI assistant
 
-- Implemented via `Lenis` in `src/App.tsx`
-- Adds fluid scrolling across the portfolio sections
+- Located in api/chat.ts
+- Runs as a Vercel serverless function
+- Uses the Anthropic SDK to stream responses from Claude
+- Requires ANTHROPIC_API_KEY in the runtime environment
 
-### AI chat endpoint
+### Quality checks
 
-- Implemented as a Vercel serverless function in `api/chat.ts`
-- Uses `@anthropic-ai/sdk` to stream assistant responses
-- Requires `ANTHROPIC_API_KEY` in environment variables
-
-### Pre-commit quality checks
-
-- Uses `husky` to install Git hooks
-- Uses `lint-staged` to run formatting and lint fixes on staged files
-- Files covered by lint-staged:
-  - `*.{js,jsx,ts,tsx}` => `prettier --write`, `eslint --fix`
-  - `*.{json,css,md}` => `prettier --write`
+- ESLint and Prettier are configured for consistent code quality
+- Husky and lint-staged run formatting and lint fixes before commits
 
 ## Tech Stack
 
 - React 19
 - TypeScript 6
-- Vite
+- Vite 8
 - Tailwind CSS 4
-- ESLint
-- Prettier
+- Motion / Lenis
 - EmailJS
-- Anthropic AI
-- Husky
-- lint-staged
-- Lenis
-- motion/react
+- Anthropic AI SDK
+- ESLint, Prettier, Husky, lint-staged
+- shadcn-style UI primitives
 
-## Repo Structure
+## Project Structure
 
-- `src/App.tsx` — root application layout and smooth scroll setup
-- `src/components/` — page sections and reusable UI components
-- `api/chat.ts` — Vercel serverless AI assistant endpoint
-- `.husky/pre-commit` — Git pre-commit hook
-- `package.json` — scripts, dependencies, lint-staged config
-- `vite.config.ts` — path aliases and plugins
+- src/App.tsx — app layout and global page setup
+- src/components/ — portfolio sections and reusable UI components
+- src/constants/ — content data for the portfolio sections
+- src/lib/ — animation helpers and utilities
+- api/chat.ts — Vercel serverless AI assistant endpoint
+- package.json — scripts, dependencies, and lint-staged configuration
+- vite.config.ts — Vite config with path aliases
 
-## Setup
+## Local Development
 
 1. Install dependencies:
 
@@ -75,13 +70,13 @@ This portfolio website includes:
    npm install
    ```
 
-2. Create environment file:
+2. Create a local environment file:
 
    ```bash
    cp .env.example .env.local
    ```
 
-3. Add required environment variables:
+3. Add the required environment variables:
 
    ```bash
    VITE_EMAILJS_SERVICE_ID=
@@ -90,44 +85,34 @@ This portfolio website includes:
    ANTHROPIC_API_KEY=
    ```
 
-4. Start development mode:
+4. Start the local development server:
+
    ```bash
    npm run dev
    ```
 
 ## Available Scripts
 
-- `npm run dev` — start local development server
-- `npm run build` — compile TypeScript and build Vite app
-- `npm run preview` — preview production build locally
-- `npm run lint` — run ESLint across the repo
-- `npm run lint:fix` — run ESLint and auto-fix issues
-- `npm run format` — format files with Prettier
-- `npm run format:check` — verify Prettier formatting
-- `npm run prepare` — install Husky hooks
+- npm run dev — start the Vite development server
+- npm run build — type-check and build the production bundle
+- npm run preview — preview the production build locally
+- npm run lint — run ESLint across the project
+- npm run lint:fix — run ESLint and auto-fix issues
+- npm run format — format files with Prettier
+- npm run format:check — check formatting without writing changes
+- npm run prepare — install Husky hooks
 
-## Husky + lint-staged
+## Deployment on Vercel
 
-This repo uses Husky and lint-staged to enforce formatting and linting on staged files before commit.
+This project is configured for deployment on Vercel.
 
-- `.husky/pre-commit` runs `npx lint-staged`
-- `lint-staged` is configured in `package.json`
-- This ensures only formatted and lint-fixed staged files are committed
-
-## Deployment
-
-The project is ready for deployment on Vercel.
-
-- Vercel detects the Vite app and serverless function in `api/`
-- Set environment variables in the Vercel dashboard
-- Build command: `npm run build`
+- Connect the GitHub repository to Vercel
+- Set the same environment variables in the Vercel project settings
+- Use the build command: npm run build
+- The Vercel deployment is intended for the production domain https://jaidevsingh.in
 
 ## Notes
 
-- Keep sensitive keys out of source control in `.env.local`
-- Run `npm run format` to format the entire repo
-- If you want commit-only checks without autofix, update the lint-staged commands accordingly
-
-## Contact
-
-For improvements or updates, edit the repo or open an issue.
+- Keep secrets inside .env.local for local development and in Vercel environment variables for production
+- Run npm run format and npm run lint before pushing changes
+- The AI assistant endpoint depends on the Anthropic API key being available at runtime
