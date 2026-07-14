@@ -22,104 +22,349 @@ const SUGGESTIONS = [
 const MAX_MESSAGES_PER_SESSION = 10;
 const COOLDOWN_MS = 3000; // 3 seconds between sends
 
-// Instant, free responses for common questions — no API call needed.
-// Only messages that don't match anything here fall through to Claude.
-const FAQ_RESPONSES: { patterns: RegExp[]; response: string }[] = [
+// ---------------------------------------------------------------------------
+// FAQ matching
+//
+//approach: coverage scoring. Tokenize the message, strip stopwords, and
+// check what fraction of the *meaningful* words in the message are accounted
+// for by a given FAQ's keyword set. Only short-circuit (skip the API call)
+// when that coverage is high — i.e. there's essentially nothing left in the
+// question that the canned answer doesn't already address. Any extra
+// substantive words (like "ml", "powered", "algorithm", "how does x work")
+// drag the score down and the message falls through to Claude.
+// ---------------------------------------------------------------------------
+
+type FaqEntry = {
+  keywords: string[];
+  response: string;
+};
+
+const STOPWORDS = new Set([
+  'a',
+  'an',
+  'the',
+  'is',
+  'are',
+  'was',
+  'were',
+  'what',
+  'which',
+  'who',
+  'how',
+  'do',
+  'does',
+  'did',
+  'of',
+  'in',
+  'on',
+  'for',
+  'to',
+  'with',
+  'about',
+  'and',
+  'or',
+  'it',
+  'this',
+  'that',
+  'he',
+  'his',
+  'him',
+  'you',
+  'your',
+  'tell',
+  'me',
+  'can',
+  'could',
+  'please',
+  'i',
+  'know',
+  'about',
+  'there',
+  'be',
+  'has',
+  'have',
+]);
+
+function tokenize(s: string): string[] {
+  return s
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .split(/\s+/)
+    .filter((t) => t && !STOPWORDS.has(t));
+}
+
+// Minimum fraction of the message's meaningful tokens that must be covered
+// by an FAQ's keywords before we treat it as a free/instant match.
+// Higher = safer (fewer false "instant" answers, more API calls).
+// Lower = cheaper (more instant answers, higher risk of a wrong canned reply).
+const MIN_COVERAGE = 0.8;
+
+const FAQ_RESPONSES: FaqEntry[] = [
   {
-    patterns: [
-      /open to.*(role|opportunit|work|job|hire)/i,
-      /available for (work|hire)/i,
+    keywords: [
+      'open',
+      'role',
+      'roles',
+      'opportunity',
+      'opportunities',
+      'work',
+      'job',
+      'hire',
+      'available',
+      'availability',
     ],
     response:
       "Yes! Jaidev is actively seeking Frontend Engineer and Full-Stack Engineer opportunities and is available to join immediately (0-day notice period). He is open to remote, hybrid, and onsite roles across India. If you'd like to discuss an opportunity, you can reach him at **jaidevsingh.dev@gmail.com** or call **+91 7982624025**.",
   },
-
   {
-    patterns: [
-      /remote|hybrid|onsite|on-site|work mode|relocat|location|based/i,
+    keywords: [
+      'remote',
+      'hybrid',
+      'onsite',
+      'on-site',
+      'workmode',
+      'mode',
+      'relocate',
+      'relocation',
+      'location',
+      'based',
+      'city',
     ],
     response:
       'Jaidev is based in Delhi, India and is open to opportunities across India. He is comfortable working remotely, in a hybrid setup, or relocating for the right opportunity.',
   },
-
   {
-    patterns: [/notice period|join.*(immediate|when)|start date|how soon/i],
+    keywords: [
+      'notice',
+      'period',
+      'join',
+      'joining',
+      'immediate',
+      'immediately',
+      'start',
+      'date',
+      'soon',
+    ],
     response:
       'Jaidev is an immediate joiner with no notice period. He can start as soon as the hiring process is completed.',
   },
-
   {
-    patterns: [/full.?time|part.?time|contract|freelance|employment type/i],
+    keywords: [
+      'fulltime',
+      'full-time',
+      'parttime',
+      'part-time',
+      'contract',
+      'freelance',
+      'employment',
+      'type',
+    ],
     response:
       'Jaidev is primarily looking for full-time Frontend Engineer or Full-Stack Engineer positions. He is also open to discussing contract opportunities that align with his expertise.',
   },
-
   {
-    patterns: [
-      /tech stack/i,
-      /what.*(technologies|skills|tools).*(use|know|specialize)/i,
-      /specializ/i,
+    keywords: [
+      'tech',
+      'stack',
+      'technologies',
+      'technology',
+      'skills',
+      'skill',
+      'tools',
+      'specialize',
+      'specializes',
+      'specialise',
+      'specialises',
     ],
     response:
-      'Jaidev specializes in React.js, Vue.js, TypeScript, and Lit.dev for building scalable, high-performance web applications. He also works with FastAPI, Python, Redux, Tailwind CSS, REST APIs, Highcharts.js, Chart.js, Git, and modern frontend tooling. His experience includes enterprise analytics platforms, AdTech products, reusable component architecture, performance optimization, and data visualization.',
+      'Jaidev specializes in React.js, Vue.js, Angular, TypeScript, and Lit.dev/Web Components for building scalable, high-performance web applications, with Redux Toolkit, Vuex, and Pinia for state management. On the backend side he works with Node.js, Express.js, FastAPI, Python, Django, MongoDB, and PostgreSQL. His toolkit also covers Tailwind CSS, Material UI, shadcn/ui, Framer Motion, Highcharts.js, and Chart.js, plus testing with Vitest, Jest, Playwright, and Cypress. He also has foundational experience with AWS (S3, CloudFront, Lambda, Route 53) and CI/CD via GitHub Actions, GitLab CI, and Bitbucket Pipelines.',
   },
-
   {
-    patterns: [/what projects|projects.*(work|built|led)/i],
+    keywords: [
+      'devops',
+      'cloud',
+      'aws',
+      'infrastructure',
+      'deployment',
+      'deploy',
+      'cicd',
+      'pipeline',
+      'terraform',
+      'cloudformation',
+    ],
+    response:
+      'Jaidev has foundational experience with cloud and DevOps: AWS (S3, CloudFront, Lambda, Route 53), serverless/edge architectures, CI/CD pipelines (GitHub Actions, GitLab CI, Bitbucket Pipelines), and infrastructure-as-code basics (CloudFormation, Terraform). His primary strength is frontend engineering, with backend and cloud skills growing alongside that.',
+  },
+  {
+    keywords: [
+      'about',
+      'philosophy',
+      'approach',
+      'like',
+      'work',
+      'style',
+      'care',
+      'ai',
+      'workflow',
+    ],
+    response:
+      "Jaidev is a Frontend Engineer who focuses on turning messy backend logic into interfaces that make sense — geo-experimentation tools, marketing analytics dashboards, and campaign management platforms used by global marketing teams. He cares about the parts that don't show up in a screenshot: solid test coverage, clean component boundaries, and code the next person won't have to fight with. He also actively incorporates AI (Claude, GitHub Copilot, ChatGPT) into his daily workflow to improve productivity and code quality.",
+  },
+  {
+    keywords: [
+      'testimonial',
+      'review',
+      'reference',
+      'recommend',
+      'recommendation',
+      'said',
+      'client',
+      'manager',
+      'colleague',
+    ],
+    response:
+      'Hassan Sarker, Senior Product Manager at American Express, worked with Jaidev on the OCS product suite and described him as a dependable, technically solid engineer — highlighting his work single-handedly building the auto-upload feature for Agile MMM and his contributions to the GeoLift front-end UI. He noted Jaidev consistently delivers reliable, end-to-end ownership on technically demanding features.',
+  },
+  {
+    keywords: ['award', 'awards', 'recognition', 'achievement', 'achievements'],
+    response:
+      'Jaidev has received three recognitions at Omnicom Media Group: Annalectual of the Quarter (Apr 2025) for consistent, exceptional performance over the quarter, and two On the Spot Awards (Aug 2025 and Feb 2026) for exceptional performance and dedication.',
+  },
+  {
+    keywords: ['linkedin', 'profile', 'social'],
+    response:
+      "You can find Jaidev on LinkedIn under 'Jaidev Singh', or reach him directly at jaidevsingh.dev@gmail.com.",
+  },
+  {
+    keywords: ['projects', 'project', 'worked', 'built', 'led'],
     response:
       'At Omnicom, Jaidev contributed to four major enterprise products: GeoLift (Geo Experimentation), Omni Video Intelligence (OVI), Meridian/Marketing Mix Modeling (MMM), and SocialKit. These projects involved analytics dashboards, campaign management, experimentation platforms, API integrations, and reusable frontend architecture. Feel free to ask about any project in detail.',
   },
-
   {
-    patterns: [/geolift/i],
+    keywords: ['geolift'],
     response:
       "GeoLift is Omnicom's geo-experimentation and incrementality measurement platform. Jaidev developed reusable Lit.dev components, interactive dashboards, geo-visualizations, and reporting interfaces. He also improved automated test coverage from nearly 0% to around 80% while resolving multiple critical UI issues.",
   },
-
   {
-    patterns: [/\bovi\b/i, /video intelligence/i],
+    keywords: ['ovi', 'video', 'intelligence'],
     response:
       'Omni Video Intelligence (OVI) is an AI-powered YouTube advertising platform that helps marketers identify brand-safe channels and optimize campaign targeting. Jaidev led the frontend development of several key features, built reusable components adopted across multiple brands, integrated YouTube APIs, and delivered scalable interfaces for campaign management and reporting.',
   },
-
   {
-    patterns: [/\bmmm\b/i, /meridian/i, /marketing mix/i],
+    keywords: ['mmm', 'meridian', 'marketing', 'mix', 'modeling', 'modelling'],
     response:
       'For the Marketing Mix Modeling (Meridian) platform, Jaidev built the complete onboarding experience, developed KPI dashboards using Highcharts.js, implemented file management workflows, and collaborated on FastAPI-powered validation services. The platform helps marketers measure campaign effectiveness and optimize media investments.',
   },
-
   {
-    patterns: [/socialkit/i, /facebook/i],
+    keywords: ['socialkit', 'facebook'],
     response:
       'SocialKit is an internal advertising platform focused on Meta (Facebook) campaign management. Jaidev developed responsive dashboards using Vue.js, Vuex, and Chart.js, enabling users to monitor campaign performance, visualize marketing metrics, and streamline advertising workflows.',
   },
-
   {
-    patterns: [/contact|email|reach|hire him/i],
+    keywords: [
+      'contact',
+      'email',
+      'reach',
+      'hire',
+      'call',
+      'phone',
+      'linkedin',
+    ],
     response:
-      "Interested in connecting with Jaidev? You can reach him directly at jaidevsingh.dev@gmail.com or call +91 7982624025. He's always happy to discuss new opportunities and collaborations.",
+      "Interested in connecting with Jaidev? You can reach him directly at jaidevsingh.dev@gmail.com, call +91 7982624025, or find him on LinkedIn as Jaidev Singh. He's always happy to discuss new opportunities and collaborations.",
   },
-
   {
-    patterns: [/education|degree|college|university|study/i],
+    keywords: [
+      'education',
+      'degree',
+      'college',
+      'university',
+      'study',
+      'studied',
+      'btech',
+      'academic',
+    ],
     response:
       'Jaidev holds a B.Tech in Mechanical and Automation Engineering from Guru Gobind Singh Indraprastha University. He successfully transitioned into software engineering through self-driven learning, hands-on projects, and various online courses. Since then, he has built over three years of professional experience developing enterprise-scale frontend applications for global clients.',
   },
-
   {
-    patterns: [/years.*(experience|exp)|how long.*(work|experience)/i],
+    keywords: ['years', 'experience', 'long', 'since', 'when'],
     response:
       'Jaidev has over 3 years of professional experience as a Frontend Engineer, building enterprise-grade analytics, marketing technology, and campaign management platforms using modern Fronend + Backend technologies.',
+  },
+  {
+    keywords: [
+      'testimonial',
+      'testimonials',
+      'reference',
+      'references',
+      'review',
+      'recommend',
+      'recommendation',
+      'worked with',
+      'colleague',
+      'manager',
+      'hassan',
+      'sarker',
+      'ghulam',
+      'habib',
+      'hari',
+      'mishra',
+      'chaitra',
+      'thimmaiah',
+    ],
+    response:
+      "Jaidev has testimonials from four people he's worked with: Hassan Sarker (Sr. PM, American Express) praises his reliability and ownership on features like the Agile MMM auto-upload; Ghulam Habib (Lead SWE, Annalect) highlights his frontend expertise and mentoring of junior engineers; Hari Mishra (Engineering Leader, Omnicom) calls out how quickly he adapted to a new tech stack under tight deadlines; and Chaitra Thimmaiah (Lead, AI and Data Automation) praises his attention to detail and product insight. Happy to share more on any of them.",
+  },
+  {
+    keywords: [
+      'about',
+      'who is',
+      'philosophy',
+      'approach',
+      'like to work',
+      'working style',
+      'personality',
+      'values',
+      'care about',
+    ],
+    response:
+      "Jaidev is a Frontend Engineer who builds interfaces that make complex data simple — turning messy backend logic into tools that actually make sense for the people using them. He cares about the parts that don't show up in a screenshot: solid test coverage, clean component boundaries, and code the next engineer won't have to fight with. He's also expanding into backend fundamentals so he can speak to both sides of a system, and actively uses AI tools in his daily workflow to move faster and improve quality.",
+  },
+  {
+    keywords: ['awards', 'award', 'recognition', 'achievement', 'achievements'],
+    response:
+      'Jaidev has received three recognitions at Omnicom Media Group: Annalectual of the Quarter for Technology (Apr 2025) for consistent, exceptional performance, and two On the Spot Awards (Aug 2025 and Feb 2026) for delivering exceptional performance and dedication.',
+  },
+  {
+    keywords: ['aws', 'cloud', 'devops', 'terraform', 'cloudformation', 'iac'],
+    response:
+      'Jaidev has foundational experience with cloud and DevOps: AWS basics (S3, CloudFront, Lambda, Route 53), CI/CD pipelines (GitHub Actions, GitLab CI, Bitbucket Pipelines), and infrastructure as code (CloudFormation, Terraform). His core depth is frontend engineering — cloud/DevOps is a supporting skill, not his primary focus.',
   },
 ];
 
 function matchFaq(message: string): string | null {
+  const msgTokens = tokenize(message);
+  if (msgTokens.length === 0) return null;
+
+  let best: { response: string; score: number } | null = null;
+
   for (const entry of FAQ_RESPONSES) {
-    if (entry.patterns.some((p) => p.test(message))) {
-      return entry.response;
+    const kwSet = new Set(tokenize(entry.keywords.join(' ')));
+    const covered = msgTokens.filter((t) => kwSet.has(t)).length;
+    const score = covered / msgTokens.length;
+
+    // Require at least one real keyword hit AND that the FAQ's keywords
+    // "explain" almost the whole message — anything extra/unrecognized
+    // in the question falls through to the real API instead of guessing.
+    if (covered > 0 && score >= MIN_COVERAGE) {
+      if (!best || score > best.score) {
+        best = { response: entry.response, score };
+      }
     }
   }
-  return null;
+
+  return best ? best.response : null;
 }
 
 // Defined outside the component so purity analysis doesn't flag this as an
@@ -162,8 +407,10 @@ export const ChatBot = () => {
     setMessages(updated);
     setUserMessageCount((prev) => prev + 1);
 
-    // Free instant answer if this matches a known common question —
-    // skips the paid API call entirely.
+    // Free instant answer if this matches a known common question with high
+    // enough coverage — skips the paid API call entirely. If the question
+    // has extra substance the FAQ doesn't cover, this returns null and we
+    // fall through to Claude below.
     const faqAnswer = matchFaq(msg);
     if (faqAnswer) {
       setMessages((prev) => [

@@ -20,14 +20,14 @@ import { Button } from '@/components/ui/button';
 
 const profile = {
   name: 'Jaidev Singh',
-  title: 'Frontend Engineer',
   email: 'jaidevsingh.dev@gmail.com',
   phone: '+91 7982624025',
-  linkedin: 'linkedin.com/in/jaidev-s-3a924721a',
-  github: 'github.com/Jaidev-Singh-JD',
+  linkedin: 'LinkedIn Profile',
+  linkedinHref: 'https://www.linkedin.com/in/jaidev-s-3a924721a',
   location: 'Delhi, India',
+  immediateJoiner: 'Immediate Joiner',
   summary:
-    'Frontend Engineer with 3+ years of experience building scalable, data-driven web applications for enterprise AdTech and marketing analytics platforms. Led development of a reusable component system adopted across 35+ global brands in 5 countries, and integrated large-scale REST APIs connecting frontend systems to a platform managing 650K+ records. Drove unit test coverage from near-zero to 80%+ across two production platforms, cutting regression bugs and strengthening release confidence.',
+    'Frontend Engineer with 3+ years of experience building scalable, data-driven web applications for enterprise AdTech and marketing analytics platforms. Led development of a reusable component system adopted across 35+ global brands in 5 countries, and integrated large-scale REST APIs connecting frontend systems to a platform managing 650K+ records. Drove unit test coverage from near-zero to 80%+ across two production platforms, cutting regression bugs and strengthening release confidence. Core strengths: React.js, TypeScript, Redux, Vue.js, Lit.dev (Web Components), and REST API integration, with a growing full-stack range in Python and FastAPI.',
   skills: {
     Frontend: [
       'React.js',
@@ -38,25 +38,75 @@ const profile = {
       'CSS3',
       'Lit.dev',
       'Vue.js',
+      'Angular',
       'Highcharts.js',
       'Chart.js',
       'Tailwind CSS',
       'Bootstrap',
+      'Material UI',
+      'shadcn/ui',
+      'Framer Motion',
     ],
-    Testing: ['Vitest', 'Unit Testing', 'Mocking', 'Test Coverage'],
+    'Architecture & Patterns': [
+      'Micro Frontends',
+      'Single-SPA',
+      'Component-Driven Design',
+      'Reusable Component Libraries',
+      'State Management (Redux Toolkit, Vuex, Pinia)',
+    ],
+    'Performance & Accessibility': [
+      'Core Web Vitals (LCP, INP, CLS)',
+      'Code Splitting & Lazy Loading',
+      'SSR/SSG',
+      'Bundle Optimization',
+      'WCAG 2.2 / ARIA',
+    ],
+    Security: [
+      'Content Security Policy (CSP)',
+      'Input Validation',
+      'XSS Mitigation (DOMPurify)',
+      'JWT Authentication',
+      'HttpOnly Cookies',
+    ],
+    Testing: [
+      'Vitest',
+      'Jest',
+      'Playwright',
+      'Cypress',
+      'Mocking',
+      'Test Coverage',
+    ],
     Backend: [
+      'Node.js',
+      'Express.js',
       'FastAPI',
       'Python',
+      'Django',
       'REST APIs',
       'Alembic',
       'SQLAlchemy',
-      'JWT Authentication',
     ],
-    Databases: ['PostgreSQL', 'SQL'],
-    Tools: ['Git', 'GitHub', 'CI/CD', 'Claude', 'GitHub Copilot', 'ChatGPT'],
-    Practices: [
-      'Agile',
-      'Micro Frontends',
+    Databases: ['PostgreSQL', 'MongoDB', 'SQL'],
+    'Cloud & DevOps (Foundational)': [
+      'AWS (S3, CloudFront, Lambda, Route 53)',
+      'CI/CD (GitHub Actions, GitLab CI, Bitbucket Pipelines)',
+      'Terraform',
+      'CloudFormation',
+    ],
+    'Development Tools': [
+      'Git',
+      'GitHub',
+      'Bitbucket',
+      'Figma',
+      'Claude',
+      'Claude Code',
+      'GitHub Copilot',
+      'ChatGPT',
+    ],
+    'Engineering Practices': [
+      'Agile (Scrum/Kanban)',
+      'Jira',
+      'Advanced Code Reviews',
       'Prompt Engineering',
       'LLM-assisted Development',
     ],
@@ -90,8 +140,8 @@ const profile = {
           highlights: [
             'Drove unit test coverage to 80%+ and implemented ESLint + Husky pre-commit hooks, cutting code review turnaround time for a team of 6+ engineers.',
             'Built a file management system with OLS SDK integration (upload, validation, progress tracking, delete) as a reusable React component, reducing failed-upload support requests.',
-            'Designed and developed the Meridian onboarding flow from scratch — file upload, column mapping, validation, and stepper navigation with Redux state management.',
-            "Built FastAPI validation endpoint for the Meridian file upload flow, parsing uploaded files and checking column names and data types against the expected schema, integrated alongside the Omni SDK's S3 presigned upload flow.",
+            'Designed and developed the Meridian onboarding flow from scratch - file upload, column mapping, validation, and stepper navigation with Redux state management.',
+            "Built FastAPI validation endpoint for the Meridian file upload flow, parsing uploaded files and checking column names and data types against the expected schema, and returning descriptive errors for missing columns or type mismatches, integrated alongside the Omni SDK's S3 presigned upload flow.",
             'Built KPI dashboards using Highcharts.js with Top-N analysis and hybrid table-chart views, reducing time-to-insight for analysts by an estimated 30%.',
           ],
         },
@@ -103,11 +153,6 @@ const profile = {
         },
       ],
     },
-  ],
-  awards: [
-    'Annalectual of the Quarter — Technology, Annalect India (Apr 2025)',
-    'On the Spot Award, Annalect India (Aug 2025)',
-    'On the Spot Award, Omnicom Global Solutions (Feb 2026)',
   ],
   projects: [
     {
@@ -123,7 +168,23 @@ const profile = {
     degree: 'B.Tech – Mechanical and Automation Engineering (8.8/10)',
     note: 'Transitioned into frontend software development through self-driven learning in JavaScript, Vue.js, and React; professionally applying it since 2023.',
   },
+  achievements: [
+    'Annalectual of the Quarter – Technology, Omnicom (Apr 2025) - awarded for consistent, exceptional performance over the quarter',
+    'On the Spot Award, Omnicom (Aug 2025) - recognized for delivering exceptional performance',
+    'On the Spot Award, Omnicom (Feb 2026) - recognized for exceptional performance and dedication',
+  ],
+  languages: [
+    { name: 'English', level: 'Professional Fluency' },
+    { name: 'Hindi', level: 'Native' },
+  ],
 };
+
+// Section header styled to match the Word doc: bold, uppercase, black bottom rule
+const SectionHeader = ({ children }: { children: React.ReactNode }) => (
+  <h2 className='text-xs sm:text-sm font-bold uppercase tracking-wide pb-1.5 mb-2.5 border-b border-neutral-900 text-neutral-900'>
+    {children}
+  </h2>
+);
 
 export const Resume = () => {
   return (
@@ -156,76 +217,97 @@ export const Resume = () => {
         </Button>
       </div>
 
-      {/* Paper page */}
-      <div className='flex justify-center py-10 px-4'>
+      {/* Paper page — single US Letter page (8.5in x 11in) on larger screens, same margins as the Word doc; fluid on mobile so it doesn't get zoomed out */}
+      <div className='flex justify-center py-6 px-3 sm:py-10 sm:px-4'>
         <div
-          className='w-full max-w-816px bg-white text-neutral-800 shadow-xl px-12 py-14'
-          style={{ fontFamily: 'Calibri, Carlito, Arial, sans-serif' }}
+          className='bg-white text-neutral-800 shadow-xl w-full max-w-204 px-5 py-6 sm:px-10 sm:py-10 md:px-15 md:py-12 md:min-h-264'
+          style={{
+            fontFamily: 'Calibri, Carlito, Arial, sans-serif',
+          }}
         >
           {/* Header */}
-          <div className='text-center border-b border-neutral-300 pb-5 mb-5'>
-            <h1 className='text-2xl font-bold uppercase tracking-wide text-neutral-900'>
-              {profile.name}
+          <div className='text-center mb-4'>
+            <h1 className='text-lg sm:text-xl font-bold text-neutral-900'>
+              {profile.name.toUpperCase()}
             </h1>
-            <p className='mt-1 text-neutral-600'>{profile.title}</p>
-            <div className='flex flex-wrap items-center justify-center gap-x-2 gap-y-1 mt-3 text-sm text-neutral-600'>
+            <div className='flex flex-wrap items-center justify-center gap-x-1.5 mt-1 text-xs sm:text-sm text-neutral-800'>
               <span>{profile.email}</span>
-              <span>•</span>
+              <span>|</span>
               <span>{profile.phone}</span>
-              <span>•</span>
-              <span>{profile.linkedin}</span>
-              <span>•</span>
-              <span>{profile.github}</span>
-              <span>•</span>
+              <span>|</span>
               <span>{profile.location}</span>
+              <span>|</span>
+              <a
+                href={profile.linkedinHref}
+                target='_blank'
+                rel='noreferrer'
+                className='text-blue-700 underline'
+              >
+                {profile.linkedin}
+              </a>
+              <span>|</span>
+              <span className='font-bold text-green-700'>
+                {profile.immediateJoiner}
+              </span>
             </div>
           </div>
 
-          {/* Summary */}
-          <section className='mb-5'>
-            <h2 className='text-sm font-bold uppercase tracking-wide mb-2 text-neutral-900'>
-              Profile Summary
-            </h2>
-            <p className='text-sm leading-relaxed text-neutral-700'>
+          {/* Professional Summary */}
+          <section className='mb-4'>
+            <SectionHeader>Professional Summary</SectionHeader>
+            <p className='text-sm leading-relaxed text-neutral-800'>
               {profile.summary}
             </p>
           </section>
 
-          <hr className='border-neutral-300 my-5' />
+          {/* Core Competencies */}
+          <section className='mb-4'>
+            <SectionHeader>Core Competencies</SectionHeader>
+            <div className='space-y-1'>
+              {Object.entries(profile.skills).map(([category, items]) => (
+                <p
+                  key={category}
+                  className='text-sm leading-relaxed text-neutral-800'
+                >
+                  <span className='font-bold text-neutral-900'>
+                    {category}:{' '}
+                  </span>
+                  {items.join(', ')}
+                </p>
+              ))}
+            </div>
+          </section>
 
-          {/* Experience */}
-          <section className='mb-5'>
-            <h2 className='text-sm font-bold uppercase tracking-wide mb-3 text-neutral-900'>
-              Work Experience
-            </h2>
+          {/* Professional Experience */}
+          <section className='mb-4'>
+            <SectionHeader>Professional Experience</SectionHeader>
             {profile.experience.map((job, i) => (
               <div key={i}>
                 <div className='flex items-baseline justify-between flex-wrap gap-x-2'>
-                  <p className='font-bold text-neutral-900'>{job.company}</p>
-                  <p className='text-sm italic text-neutral-500'>
+                  <p className='text-sm font-bold text-neutral-900'>
+                    {job.company} – {job.location}
+                  </p>
+                  <p className='text-sm font-bold text-neutral-900'>
                     {job.period}
                   </p>
                 </div>
-                <div className='flex items-baseline justify-between flex-wrap gap-x-2 mb-3'>
-                  <p className='text-sm italic font-semibold text-neutral-700'>
-                    {job.role}
-                  </p>
-                  <p className='text-sm text-neutral-500'>{job.location}</p>
-                </div>
+                <p className='text-sm italic text-neutral-800 mb-2'>
+                  {job.role}
+                </p>
 
                 {job.products.map((product, j) => (
                   <div
                     key={j}
-                    className={j > 0 ? 'mt-4' : ''}
+                    className={j > 0 ? 'mt-3' : ''}
                   >
-                    <p className='text-sm font-semibold text-neutral-900 mb-1'>
+                    <p className='text-sm font-bold text-neutral-900 mb-1'>
                       {product.name}
                     </p>
-                    <ul className='space-y-1'>
+                    <ul className='space-y-0.5'>
                       {product.highlights.map((h, k) => (
                         <li
                           key={k}
-                          className='flex text-sm text-neutral-700'
+                          className='flex text-sm text-neutral-800'
                         >
                           <span className='mr-2'>•</span>
                           <span className='leading-relaxed'>{h}</span>
@@ -238,88 +320,76 @@ export const Resume = () => {
             ))}
           </section>
 
-          <hr className='border-neutral-300 my-5' />
-
-          {/* Awards */}
-          <section className='mb-5'>
-            <h2 className='text-sm font-bold uppercase tracking-wide mb-2 text-neutral-900'>
-              Awards & Recognition
-            </h2>
-            <ul className='space-y-1'>
-              {profile.awards.map((a, i) => (
+          {/* Key Projects */}
+          <section className='mb-4'>
+            <SectionHeader>Key Projects</SectionHeader>
+            <ul className='space-y-0.5'>
+              {profile.projects.map((project, i) => (
                 <li
                   key={i}
-                  className='flex text-sm text-neutral-700'
+                  className='flex text-sm text-neutral-800'
                 >
                   <span className='mr-2'>•</span>
-                  <span>{a}</span>
+                  <span className='leading-relaxed'>
+                    <span className='font-bold text-neutral-900'>
+                      {project.name}
+                    </span>{' '}
+                    ({project.tech.join(', ')}) - {project.description}
+                  </span>
                 </li>
               ))}
             </ul>
           </section>
 
-          <hr className='border-neutral-300 my-5' />
-
-          {/* Personal Projects */}
-          <section className='mb-5'>
-            <h2 className='text-sm font-bold uppercase tracking-wide mb-2 text-neutral-900'>
-              Personal Projects
-            </h2>
-            {profile.projects.map((project, i) => (
-              <div key={i}>
-                <p className='text-sm text-neutral-700'>
-                  <span className='font-bold text-neutral-900'>
-                    {project.name}
-                  </span>{' '}
-                  ({project.tech.join(', ')}) — {project.description}
-                </p>
-              </div>
-            ))}
-          </section>
-
-          <hr className='border-neutral-300 my-5' />
-
-          {/* Technical Skills */}
-          <section className='mb-5'>
-            <h2 className='text-sm font-bold uppercase tracking-wide mb-2 text-neutral-900'>
-              Technical Skills
-            </h2>
-            <div className='space-y-1'>
-              {Object.entries(profile.skills).map(([category, items]) => (
-                <p
-                  key={category}
-                  className='text-sm text-neutral-700'
-                >
-                  <span className='font-bold text-neutral-900'>
-                    {category}:{' '}
-                  </span>
-                  {items.join(', ')}
-                </p>
-              ))}
-            </div>
-          </section>
-
-          <hr className='border-neutral-300 my-5' />
-
           {/* Education */}
-          <section>
-            <h2 className='text-sm font-bold uppercase tracking-wide mb-2 text-neutral-900'>
-              Education
-            </h2>
+          <section className='mb-4'>
+            <SectionHeader>Education</SectionHeader>
             <div className='flex items-baseline justify-between flex-wrap gap-x-2'>
-              <p className='font-bold text-neutral-900'>
+              <p className='text-sm font-bold text-neutral-900'>
                 {profile.education.institution}
               </p>
-              <p className='text-sm italic text-neutral-500'>
+              <p className='text-sm font-bold text-neutral-900'>
                 {profile.education.period}
               </p>
             </div>
-            <p className='text-sm text-neutral-700'>
+            <p className='text-sm italic text-neutral-800'>
               {profile.education.degree}
             </p>
-            <p className='text-sm text-neutral-500 mt-1'>
+            <p className='text-sm text-neutral-800 mt-1'>
               {profile.education.note}
             </p>
+          </section>
+
+          {/* Achievements */}
+          <section className='mb-4'>
+            <SectionHeader>Achievements</SectionHeader>
+            <ul className='space-y-0.5'>
+              {profile.achievements.map((a, i) => (
+                <li
+                  key={i}
+                  className='flex text-sm text-neutral-800'
+                >
+                  <span className='mr-2'>•</span>
+                  <span className='leading-relaxed'>{a}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* Languages */}
+          <section>
+            <SectionHeader>Languages</SectionHeader>
+            <div className='space-y-0.5'>
+              {profile.languages.map((l, i) => (
+                <p
+                  key={i}
+                  className='text-sm text-neutral-800'
+                >
+                  <span className='font-bold text-neutral-900'>{l.name}</span> –{' '}
+                  {l.level}
+                </p>
+              ))}
+            </div>
           </section>
         </div>
       </div>
