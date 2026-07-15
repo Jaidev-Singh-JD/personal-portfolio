@@ -26,7 +26,7 @@ export const Footer = () => {
       whileInView='visible'
       viewport={{ once: true, amount: 0.2 }}
       variants={fadeUp}
-      className='border-t border-neutral-800 pt-10 pb-6'
+      className='mt-8 sm:mt-10 border-t border-neutral-800 pt-10 pb-6'
     >
       <div className='flex flex-col items-center gap-6 text-center sm:flex-row sm:justify-between sm:text-left'>
         <div>
