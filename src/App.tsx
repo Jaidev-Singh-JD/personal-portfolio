@@ -60,6 +60,7 @@ export const App = () => {
       <Testimonials />
       <Divider />
       <Contact />
+      <Divider />
       <Footer />
     </main>
   );
