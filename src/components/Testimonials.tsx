@@ -24,6 +24,7 @@ import { ChevronLeftIcon, ChevronRightIcon, SparkleIcon } from 'lucide-react';
 import { testimonials } from '@/constants';
 
 const LONG_TEXT_THRESHOLD = 220;
+const EXPANDED_MAX_HEIGHT = 320;
 
 export const Testimonials = () => {
   const [curSlide, setCurSlide] = useState(0);
@@ -68,7 +69,6 @@ export const Testimonials = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
-            layout
             className='border rounded-3xl border-neutral-800 bg-neutral-900/10 p-8 flex flex-col md:flex-row items-start gap-6'
           >
             <img
@@ -93,13 +93,23 @@ export const Testimonials = () => {
               </div>
 
               <div>
-                <p
-                  className={`text-neutral-300 leading-relaxed ${
-                    isLong && !expanded ? 'line-clamp-4' : ''
-                  }`}
+                <div
+                  className={
+                    expanded ? 'overflow-y-auto pr-1' : 'overflow-hidden'
+                  }
+                  style={{
+                    maxHeight: expanded ? EXPANDED_MAX_HEIGHT : undefined,
+                  }}
+                  data-lenis-prevent
                 >
-                  {currentText}
-                </p>
+                  <p
+                    className={`text-neutral-300 leading-relaxed ${
+                      isLong && !expanded ? 'line-clamp-4' : ''
+                    }`}
+                  >
+                    {currentText}
+                  </p>
+                </div>
 
                 {isLong && (
                   <button
