@@ -28,9 +28,9 @@ export const Achievements = () => {
     <motion.section
       initial='hidden'
       whileInView='visible'
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.15, margin: '0px 0px -100px 0px' }}
       variants={staggerContainer(0)}
-      className='mt-30 scroll-mt-10'
+      className='scroll-mt-10'
       id='achievements'
     >
       <SectionHeader
@@ -38,9 +38,6 @@ export const Achievements = () => {
         title='Achievements & Awards'
       />
       <motion.div
-        initial='hidden'
-        whileInView='visible'
-        viewport={{ once: true, amount: 0.3 }}
         variants={staggerContainer(0.5)}
         className='grid md:grid-cols-2 gap-10 mt-10'
       >

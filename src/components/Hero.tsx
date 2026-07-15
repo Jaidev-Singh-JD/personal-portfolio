@@ -36,7 +36,7 @@ export const Hero = () => {
       whileInView='visible'
       viewport={{ once: true, amount: 0.3 }}
       variants={staggerContainer(0)}
-      className='pt-20'
+      className='pt-10 sm:pt-16'
       id='hero'
     >
       <motion.p

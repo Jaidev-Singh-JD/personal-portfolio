@@ -26,8 +26,11 @@ import { projectsDetailData } from '@/constants/index';
 export const Projects = () => {
   return (
     <motion.section
+      initial='hidden'
+      whileInView='visible'
+      viewport={{ once: true, amount: 0.15, margin: '0px 0px -100px 0px' }}
       variants={staggerContainer(0)}
-      className='mt-30 scroll-mt-10'
+      className='scroll-mt-10'
       id='projects'
     >
       <SectionHeader
@@ -36,10 +39,7 @@ export const Projects = () => {
       />
 
       <motion.div
-        className='grid md:grid-cols-2 gap-10 mt-10'
-        initial='hidden'
-        whileInView='visible'
-        viewport={{ once: true, amount: 0.3 }}
+        className='grid grid-cols-1 sm:grid-cols-2 gap-10 mt-10'
         variants={staggerContainer(0.5)}
       >
         {projectsDetailData.map((project, i) => (

@@ -49,7 +49,7 @@ export const Testimonials = () => {
       whileInView='visible'
       viewport={{ once: true, amount: 0.8 }}
       variants={fadeUp}
-      className='mt-20 scroll-mt-10'
+      className='scroll-mt-10'
       id='testimonials'
     >
       <p className='flex items-center justify-center py-1 gap-2 border border-neutral-600 rounded-sm w-32'>

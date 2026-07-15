@@ -26,25 +26,20 @@ import { skillsData, tools } from '@/constants/index';
 
 export const Skills = () => {
   return (
-    <motion.section
-      initial='hidden'
-      whileInView='visible'
-      viewport={{ once: true, amount: 0.3 }}
-      variants={staggerContainer(0)}
-      className='mt-30 scroll-mt-10'
+    <section
+      className='scroll-mt-10'
       id='skills'
     >
       <SectionHeader
         subtitle='Expertise'
         title='Skills & Tools'
       />
-
       <motion.div
         initial='hidden'
         whileInView='visible'
-        viewport={{ once: true, amount: 0.3 }}
-        variants={staggerContainer(0.5)}
-        className='grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-5 mt-10'
+        viewport={{ once: true, amount: 0.15 }}
+        variants={staggerContainer(0.2)}
+        className='grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mt-10'
       >
         {tools.map((tool, i) => (
           <ToolsCard
@@ -57,9 +52,9 @@ export const Skills = () => {
       <motion.div
         initial='hidden'
         whileInView='visible'
-        viewport={{ once: true, amount: 0.3 }}
-        variants={staggerContainer(0.5)}
-        className='grid md:grid-cols-2 gap-10 mt-10'
+        viewport={{ once: true, amount: 0.15 }}
+        variants={staggerContainer(0.2)}
+        className='grid grid-cols-1 md:grid-cols-2 gap-10 mt-10'
       >
         {skillsData.map((category) => (
           <motion.div
@@ -70,6 +65,6 @@ export const Skills = () => {
           </motion.div>
         ))}
       </motion.div>
-    </motion.section>
+    </section>
   );
 };
