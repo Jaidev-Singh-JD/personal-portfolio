@@ -21,7 +21,7 @@ ABOUT
 Jaidev builds interfaces that make complex data simple. He's a Frontend Engineer with 3+ years of experience building enterprise AdTech applications used by global marketing teams — geo-experimentation tools, marketing analytics dashboards, campaign management platforms. He turns messy backend logic into interfaces that actually make sense. He works across the frontend stack and is building out real backend fundamentals too, so he can speak both sides instead of just handing off. He cares about the parts that don't show up in a screenshot: solid test coverage, clean component boundaries, code the next person won't have to fight with. He actively incorporates AI into his daily workflow to improve productivity, accelerate development, enhance code quality, and explore better engineering solutions.
 
 SUMMARY
-Frontend Engineer with 3+ years of experience building scalable, data-driven web applications for enterprise AdTech and marketing analytics platforms. Built a reusable component system adopted across 35+ global brands in 5 countries, and integrated REST APIs connecting frontend systems to a platform managing 650K+ records. Drove unit test coverage from near-zero to 80%+ across two production platforms.
+Frontend Engineer with 3+ years of experience building scalable, data-driven web applications for enterprise AdTech and marketing analytics platforms. Built a reusable component system adopted across 35+ global brands in 5 countries, and integrated REST APIs connecting frontend systems to a platform managing 650K+ records. Drove unit test coverage from near-zero to 80%+ across two production platforms. Has hands-on exposure to Docker-based development environments and to Flask for backend work, in addition to his primary FastAPI/Python backend experience.
 
 WORK EXPERIENCE — Omnicom Media Group, Gurugram (Apr 2023 – Jun 2026), Frontend Engineer
 
@@ -37,7 +37,7 @@ Omni Video Intelligence (OVI) (AdTech, ML Integration, YouTube, Brand Safety, An
 Enterprise YouTube targeting platform leveraging ML-powered channel curation and brand safety to help media planners build, customize, and distribute inclusion and exclusion lists across 650K+ curated channels and 400M+ videos. Key features: ML-powered channel curation & brand safety, custom inclusion/exclusion/keyword lists, distribution history with audit trail, YouTube Data API integration & analytics. Developed reusable Lit-based UI components for channel, keyword, topic, and exclusion list management, integrated 5+ REST APIs including the YouTube Data API, built distribution history and audit-trail workflows, and delivered data-driven interfaces for planners managing YouTube campaigns across 35+ brands in 5 countries. Stack: Lit.dev, TypeScript, Web Components, Data Visualization, YouTube Data API.
 
 SocialKit (AdTech, Facebook Ads, Campaign Management, Dashboards):
-Enterprise AdTech suite of internal tools for Facebook advertising, enabling campaign management, automated QA, tracking URL generation, social commerce auditing, and real-time performance analytics through unified dashboards. Key features: real-time campaign dashboards & analytics, automated QA and ad tracking integrations, interactive charts, reporting & notifications. Developed scalable frontend applications using Vue.js, Vuex, and Vue Router, building interactive dashboards, reusable UI components, real-time chart visualizations, notification systems, and integrating third-party advertising platforms for campaign tracking and reporting. Stack: JavaScript, Vue.js, Vuex, Vue Router, Bootstrap, Chart.js, REST APIs, Google Campaign Manager API, AdForm, Flashtalking.
+Enterprise AdTech suite of internal tools for Facebook advertising, enabling campaign management, automated QA, tracking URL generation, social commerce auditing, and real-time performance analytics through unified dashboards. Key features: real-time campaign dashboards & analytics, automated QA and ad tracking integrations, interactive charts, reporting & notifications. Developed scalable frontend applications using Vue.js, Vuex, and Vue Router, building interactive dashboards, reusable UI components, real-time chart visualizations, notification systems, and integrating third-party advertising platforms for campaign tracking and reporting. Also collaborated with backend engineers using Git and Docker-based development environments to keep local setup and testing consistent across applications, and worked on API contracts, request/response models, and backend validation logic alongside them. Stack: JavaScript, Vue.js, Vuex, Vue Router, Bootstrap, Chart.js, REST APIs, Google Campaign Manager API, AdForm, Flashtalking, Docker.
 
 TECHNICAL SKILLS
 
@@ -48,15 +48,16 @@ Performance & Core Web Vitals: Performance Optimization (LCP, INP, CLS), Code Sp
 Security Essentials: Content Security Policy (CSP), Input Validation, XSS Mitigation (DOMPurify), Secure Authentication (JWT, HttpOnly Cookies)
 Testing & Quality Automation: Unit Testing (Vitest, Jest), End-to-End Testing (Playwright, Cypress), Mocking & Test Coverage, Static Analysis (ESLint), Code Quality (Prettier, Husky, Commitlint), Software Composition Analysis (Dependabot)
 Build, Tooling & Orchestration: Vite, Webpack, Package Managers (NPM, PNPM, Yarn), REST & GraphQL API Integration
-Backend & Data: Node.js, FastAPI, Python, Django, MongoDB, SQLAlchemy, Alembic, PostgreSQL, SQL, Express.js
+Backend & Data: Node.js, FastAPI, Flask, Python, Django, MongoDB, SQLAlchemy, Alembic, PostgreSQL, MySQL, SQL, Express.js, JWT Authentication
 Agentic AI & Engineering Systems: Claude Code, Claude AI SDK, ChatGPT, GitHub Copilot, AI-Assisted Development, LLM-Assisted Development, Agentic AI Workflow Design, Advanced Prompt Engineering
-Cloud & DevOps Infrastructure (Foundational level): AWS (S3, CloudFront, Lambda, Route 53), Serverless & Edge Architectures, CI/CD Pipelines (GitHub Actions, GitLab CI, Bitbucket Pipelines), Infrastructure as Code (CloudFormation, Terraform)
+Cloud & DevOps Infrastructure (Foundational level): AWS (S3, CloudFront, Lambda, Route 53), Docker, Serverless & Edge Architectures, CI/CD Pipelines (GitHub Actions, GitLab CI, Bitbucket Pipelines), Infrastructure as Code (CloudFormation, Terraform)
 Engineering Delivery: Advanced Code Reviews, Quality Gates, Git & Bitbucket, Branching Strategies, Agile (Scrum/Kanban), Jira, Cross-functional Collaboration
 
-Note: cloud/DevOps skills (AWS, CI/CD, IaC) are at a foundational level — Jaidev's core depth is frontend engineering. Be upfront about this if asked directly how advanced his DevOps experience is; don't oversell it.
+Note: cloud/DevOps skills (AWS, CI/CD, IaC) are at a foundational level — Jaidev's core depth is frontend engineering. Docker experience comes from using Docker-based local development environments during his time at Omnicom (SocialKit), not from writing production Dockerfiles or orchestration setups. Be upfront about this if asked directly how advanced his DevOps or Docker experience is; don't oversell it.
 
 PERSONAL PROJECTS
 Todo Application (FastAPI, PostgreSQL) — production-style REST API with JWT auth, Alembic migrations, scoped data access
+Student Exam Management System (Flask, Python, HTML/CSS) — CRUD web application for managing student records and semester results, implementing relational data models, server-side rendering, and chart-based performance visualization. This is the source of his hands-on Flask experience.
 
 EDUCATION
 Guru Gobind Singh Indraprastha University, 2018-2022
