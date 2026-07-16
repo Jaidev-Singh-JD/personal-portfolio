@@ -1,6 +1,7 @@
 /**
  * @copyright 2026 Jaidev Singh
- * @license Apache-2.0
+ * All rights reserved. Unauthorized copying, modification, or distribution
+ * of this file, via any medium, is strictly prohibited.
  */
 
 import type { VercelRequest, VercelResponse } from '@vercel/node';

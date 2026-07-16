@@ -1,6 +1,7 @@
 /**
  * @copyright 2026 Jaidev Singh
- * @license Apache-2.0
+ * All rights reserved. Unauthorized copying, modification, or distribution
+ * of this file, via any medium, is strictly prohibited.
  */
 /**
  * Node modules
@@ -67,7 +68,9 @@ export const Footer = () => {
       </div>
 
       <p className='text-xs text-neutral-600 text-center mt-8'>
-        © {year} Jaidev Singh. All rights reserved.
+        © {year} Jaidev Singh. All rights reserved. Unauthorized copying,
+        modification, or distribution of this portfolio content is strictly
+        prohibited.
       </p>
     </motion.footer>
   );
