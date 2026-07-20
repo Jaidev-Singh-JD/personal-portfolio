@@ -133,7 +133,7 @@ export const Contact = () => {
           href='mailto:Jaidevsingh.dev@gmail.com'
           className='text-green-400 hover:underline'
         >
-          Jaidevsingh99@gmail.com
+          Jaidevsingh.dev@gmail.com
         </a>{' '}
         or use the form below.
       </motion.p>
