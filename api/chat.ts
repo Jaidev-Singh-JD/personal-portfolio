@@ -80,7 +80,7 @@ Hari Mishra (Engineering Leader & Frontend Architect, Omnicom) calls Jaidev an e
 Chaitra Thimmaiah (Lead, AI and Data Automation) worked with Jaidev on two projects and highlights his exceptional attention to detail, thorough understanding of project requirements, and meaningful contributions to product-enhancement discussions. She describes him as a quick learner who collaborates effectively and stays current with emerging technologies.
 
 AVAILABILITY
-Open to Frontend Engineer and Full-Stack roles. Contact: jaidevsingh.dev@gmail.com. LinkedIn: Jaidev Singh.`;
+Jaidev is an immediate joiner with no notice period — he can start as soon as the hiring process is completed. Open to Frontend Engineer and Full-Stack roles, remote, hybrid, or onsite across India. Contact: jaidevsingh.dev@gmail.com. LinkedIn: Jaidev Singh.`;
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
