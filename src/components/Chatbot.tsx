@@ -257,9 +257,18 @@ const FAQ_RESPONSES: FaqEntry[] = [
       'For the Marketing Mix Modeling (Meridian) platform, Jaidev built the complete onboarding experience, developed KPI dashboards using Highcharts.js, implemented file management workflows, and collaborated on FastAPI-powered validation services. The platform helps marketers measure campaign effectiveness and optimize media investments.',
   },
   {
-    keywords: ['socialkit', 'facebook'],
+    keywords: [
+      'socialkit',
+      'facebook',
+      'dcmi',
+      'autoqa',
+      'auto',
+      'qa',
+      'socialcommerce',
+      'commerce',
+    ],
     response:
-      'SocialKit is an internal advertising platform focused on Meta (Facebook) campaign management. Jaidev developed responsive dashboards using Vue.js, Vuex, and Chart.js, enabling users to monitor campaign performance, visualize marketing metrics, and streamline advertising workflows.',
+      "In SocialKit — Omnicom's suite of tools for Facebook advertising — Jaidev built dashboards and reusable UI components across all four apps in the suite (DCMI+, Auto QA, Social Commerce, and the core SocialKit platform) using Vue.js and Vue Router, and contributed to migrating the frontend from Vue 2/Vuex to Vue 3/Pinia. He built real-time campaign dashboards with Chart.js for traffic and performance metrics, integrated Google Campaign Manager, FlashTalking, and AdForm for automated ad tracking and reporting (including DCMI+'s tracking-URL generation), implemented an in-app notification system, and built a Help Page Dashboard for user support. He also built an FAQ page with a Quill.js WYSIWYG editor and an admin-only content management component, and used Bootstrap for responsive, cross-device UI.",
   },
   {
     keywords: [
