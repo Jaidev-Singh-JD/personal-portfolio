@@ -21,6 +21,7 @@ type RoleTypewriterProps = {
 
 const DEFAULT_ROLES = [
   'Frontend Engineer',
+  'Full Stack Engineer',
   'UI Architect',
   'React Developer',
   'UI Engineer',
