@@ -42,7 +42,7 @@ import {
 } from 'lucide-react';
 
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { SiGmail } from 'react-icons/si';
+import { SiGmail, SiLeetcode } from 'react-icons/si';
 
 const navLinks: LinksType[] = [
   { label: 'Home', link: '#hero', icon: Home },
@@ -76,6 +76,11 @@ const socialLinks: LinksType[] = [
     icon: FaLinkedin,
     label: 'Linkedin',
     link: 'https://www.linkedin.com/in/jaidev-s-3a924721a',
+  },
+  {
+    icon: SiLeetcode,
+    label: 'Leetcode',
+    link: 'https://leetcode.com/u/JaidevSingh99/',
   },
   {
     icon: SiGmail,

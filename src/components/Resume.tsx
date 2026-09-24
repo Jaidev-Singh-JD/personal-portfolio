@@ -28,128 +28,91 @@ const profile = {
   location: 'Delhi, India',
   immediateJoiner: 'Immediate Joiner',
   summary:
-    'Frontend Engineer with 3+ years of experience building scalable, data-driven web applications for enterprise AdTech and marketing analytics platforms. Led development of a reusable component system adopted across 35+ global brands in 5 countries, and integrated large-scale REST APIs connecting frontend systems to a platform managing 650K+ records. Drove unit test coverage from near-zero to 80%+ across two production platforms, cutting regression bugs and strengthening release confidence. Core strengths: React.js, TypeScript, Redux, Vue.js, Lit.dev (Web Components), and REST API integration, with a growing full-stack range in Python and FastAPI.',
+    'Software Engineer with 3+ years of experience building customer-facing, UI-heavy features in React.js, Next.js, TypeScript, and modern JavaScript (ES6+) for enterprise SaaS platforms. Strong grounding in React fundamentals — functional components, Hooks, and state management (Redux) — with hands-on experience translating UX designs into performant, accessible, and maintainable production UI. Proven track record integrating REST APIs, building reusable/modular component libraries with Node.js-based backends, and driving unit and integration test coverage from near-zero to 80%+ across two production platforms. Comfortable working within Agile/Scrum teams, collaborating closely with Product, Design, and Backend engineers, and contributing to code reviews and CI/CD-based release processes.',
   skills: {
     Frontend: [
-      'React.js',
-      'Redux',
-      'JavaScript (ES6+)',
+      'React.js (Hooks, functional components, Context API, Redux for state management)',
+      'Next.js',
+      'React Router',
+      'Performance Optimization (memoization, lazy loading, code splitting)',
       'TypeScript',
+      'JavaScript (ES6+, closures, promises, async/await)',
       'HTML5',
       'CSS3',
-      'Lit.dev',
+      'Responsive Design',
       'Vue.js',
-      'Angular',
-      'Highcharts.js',
-      'Chart.js',
-      'Tailwind CSS',
-      'Bootstrap',
-      'Material UI',
-      'shadcn/ui',
-      'Framer Motion',
+      'Lit.dev',
+      'Micro-frontend Architecture',
     ],
-    'Architecture & Patterns': [
-      'Micro Frontends',
-      'Single-SPA',
-      'Component-Driven Design',
-      'Reusable Component Libraries',
-      'State Management (Redux Toolkit, Vuex, Pinia)',
-    ],
-    'Performance & Accessibility': [
-      'Core Web Vitals (LCP, INP, CLS)',
-      'Code Splitting & Lazy Loading',
-      'SSR/SSG',
-      'Bundle Optimization',
-      'WCAG 2.2 / ARIA',
-    ],
-    Security: [
-      'Content Security Policy (CSP)',
-      'Input Validation',
-      'XSS Mitigation (DOMPurify)',
-      'JWT Authentication',
-      'HttpOnly Cookies',
-    ],
-    Testing: [
+    'Quality & Testing': [
       'Vitest',
-      'Jest',
-      'Playwright',
-      'Cypress',
+      'Unit Testing',
+      'Integration Testing',
       'Mocking',
       'Test Coverage',
+      'ESLint',
+      'Code Reviews',
     ],
-    Backend: [
+    'APIs & Backend': [
+      'REST API Design & Integration',
       'Node.js',
-      'Express.js',
       'FastAPI',
       'Python',
-      'Django',
-      'REST APIs',
-      'Alembic',
-      'SQLAlchemy',
+      'JWT Authentication',
     ],
-    Databases: ['PostgreSQL', 'MongoDB', 'SQL'],
-    'Cloud & DevOps (Foundational)': [
-      'AWS (S3, CloudFront, Lambda, Route 53)',
-      'CI/CD (GitHub Actions, GitLab CI, Bitbucket Pipelines)',
-      'Terraform',
-      'CloudFormation',
+    'Accessibility & UX': [
+      'WCAG-compliant UI Implementation',
+      'Design-to-Code Translation',
+      'Cross-browser/Responsive UI',
     ],
-    'Development Tools': [
+    'Tooling & Practices': [
       'Git',
       'GitHub',
-      'Bitbucket',
-      'Figma',
-      'Claude',
-      'Claude Code',
-      'GitHub Copilot',
-      'ChatGPT',
-    ],
-    'Engineering Practices': [
-      'Agile (Scrum/Kanban)',
-      'Jira',
-      'Advanced Code Reviews',
-      'Prompt Engineering',
-      'LLM-assisted Development',
+      'CI/CD Pipelines (GitHub Actions)',
+      'Docker',
+      'Agile/Scrum Ceremonies',
+      'Sprint Planning',
+      'Husky Pre-commit Hooks',
     ],
   },
   experience: [
     {
-      company: 'Omnicom Media Group',
+      company: 'Omnicom Media',
       location: 'Gurugram, India',
-      role: 'Software Engineer (Frontend Engineer)',
+      role: 'Software Engineer',
       period: 'Apr 2023 – Jun 2026',
       products: [
         {
           name: 'GeoLift – Geo Experimentation & Incrementality Platform',
           highlights: [
-            'Increased unit test coverage from near-zero to 80% across pre-campaign, form, core services/state, and utility modules (40+ test files), cutting recurring regression bugs reported by QA.',
-            'Built reusable Lit.dev components for pre/post-campaign workflows (results-action buttons, nested data tables, test cloning, recommendation controls), reducing development time for new reporting features by an estimated 25-30%.',
-            'Resolved 10+ critical UI defects in geoplot rendering, column mapping, and table layouts, directly unblocking campaign analysis.',
-            'Implemented accessible (WCAG-compliant) styling across the application header and pre-campaign confirmation pages, improving usability for screen-reader users.',
+            'Owned front-end build and test systems, increasing unit and integration test coverage from near-zero to 80%+ across 40+ test files, cutting recurring regression bugs and strengthening release confidence.',
+            'Built reusable, modular React.js/TypeScript and Lit.dev components using Hooks and shared state patterns, reducing development time for new reporting features by an estimated 25-30%.',
+            'Implemented client-side routing with React Router and performance optimizations (memoization, lazy loading, code splitting) across key application flows, improving load times and navigation.',
+            'Translated UX designs and wireframes into production-ready, technically feasible UI, resolving 10+ critical UI defects across rendering, data mapping, and table/layout components.',
+            'Implemented WCAG-compliant, accessible styling across key application flows, improving usability for screen-reader users and aligning UI with accessibility best practices.',
           ],
         },
         {
           name: 'Omni Video Intelligence (OVI) – YouTube Targeting and Content',
           highlights: [
-            'Built reusable core components (list tables, exclusion lists, channel/keyword/topic forms) adopted platform-wide for a tool used by 35+ brands across 5 countries, reducing duplicate code by an estimated 20%.',
-            "Integrated 5+ REST API endpoints (curated lists, distribution, list metrics), including Google's YouTube Data API, connecting frontend to a platform managing 650K+ curated channels across 32 categories.",
-            'Built distribution history tracking UI with full audit trail of request status, users, and timestamps, improving transparency for traders managing 50+ active campaigns.',
+            'Built reusable core UI components (list tables, exclusion lists, forms) adopted platform-wide across a B2B SaaS tool used by 35+ brands in 5 countries, reducing duplicate code by an estimated 20%.',
+            "Collaborated with backend and DevOps engineers to design and integrate 5+ REST API endpoints, including Google's YouTube Data API, connecting the frontend to a platform managing 650K+ records.",
+            'Built an audit-trail UI for distribution history tracking, improving transparency for users managing 50+ active campaigns.',
           ],
         },
         {
           name: 'Marketing Mix Modeling (MMM) & Meridian',
           highlights: [
-            'Drove unit test coverage to 80%+ and implemented ESLint + Husky pre-commit hooks, cutting code review turnaround time for a team of 6+ engineers.',
-            'Built a file management system with OLS SDK integration (upload, validation, progress tracking, delete) as a reusable React component, reducing failed-upload support requests.',
-            'Designed and developed the Meridian onboarding flow from scratch - file upload, column mapping, validation, and stepper navigation with Redux state management.',
-            "Built FastAPI validation endpoint for the Meridian file upload flow, parsing uploaded files and checking column names and data types against the expected schema, and returning descriptive errors for missing columns or type mismatches, integrated alongside the Omni SDK's S3 presigned upload flow.",
-            'Built KPI dashboards using Highcharts.js with Top-N analysis and hybrid table-chart views, reducing time-to-insight for analysts by an estimated 30%.',
+            'Drove unit test coverage to 80%+ and implemented ESLint + Husky pre-commit hooks plus GitHub Actions CI/CD pipelines, improving code quality and cutting code review turnaround time for a team of 6+ engineers.',
+            'Designed and built the Meridian onboarding flow from scratch - file upload, form validation, and multi-step navigation - using React, Context API, and Redux for state management.',
+            'Built a FastAPI backend validation endpoint integrated with the React upload workflow, returning descriptive errors and reducing client-side validation complexity.',
+            'Built KPI dashboards with Highcharts.js, reducing time-to-insight for analysts by an estimated 30%.',
           ],
         },
         {
           name: 'SocialKit – Suite of Tools for Facebook Advertising',
           highlights: [
-            'Built real-time campaign dashboards (Vue.js, Vuex, Chart.js) and automated data sync via AdForm/Flashtalking API integrations.',
+            'Built real-time campaign dashboards (Vue.js, Vuex, Chart.js) and automated data sync via third-party REST API integrations, collaborating cross-functionally with backend engineers.',
           ],
         },
       ],
@@ -157,26 +120,36 @@ const profile = {
   ],
   projects: [
     {
+      name: 'AI Chatbot — Claude API, Agent-Based Tool Orchestration & Function Calling',
+      tech: ['Claude API', 'React', 'ShadCN UI'],
+      description:
+        'Built a chatbot integrating the Claude API with agent-based tool orchestration via function calling to dynamically fetch external API data based on user intent - a multi-step, event-driven LLM/agent workflow. Deployed via Vercel serverless functions; UI built with React, ShadCN UI, and GitHub Actions CI/CD.',
+    },
+    {
       name: 'Todo Application',
       tech: ['FastAPI', 'PostgreSQL'],
       description:
         'Built a production-style REST API end-to-end (JWT auth, Alembic migrations, scoped data access) to demonstrate backend fundamentals beyond frontend work.',
     },
   ],
+  certifications: [
+    'Vue.js 3 Essential Training (LinkedIn, 2024)',
+    'React Essential Training (LinkedIn, 2024)',
+    'Learning Jira Software (LinkedIn, 2025)',
+    'FastAPI – The Complete Course 2026 (Udemy, 2025)',
+    'SQL (Udemy, 2022)',
+    'Tailwind CSS 3 Essential Training (LinkedIn Learning)',
+    'UiPath Agentic Prompt Engineering (UiPath)',
+  ],
   education: {
     institution: 'Guru Gobind Singh Indraprastha University',
     period: '2018 – 2022',
     degree: 'B.Tech – Mechanical and Automation Engineering (8.8/10)',
-    note: 'Transitioned into frontend software development through self-driven learning in JavaScript, Vue.js, and React; professionally applying it since 2023.',
   },
   achievements: [
-    'Annalectual of the Quarter – Technology, Omnicom (Apr 2025) - awarded for consistent, exceptional performance over the quarter',
-    'On the Spot Award, Omnicom (Aug 2025) - recognized for delivering exceptional performance',
-    'On the Spot Award, Omnicom (Feb 2026) - recognized for exceptional performance and dedication',
-  ],
-  languages: [
-    { name: 'English', level: 'Professional Fluency' },
-    { name: 'Hindi', level: 'Native' },
+    'Annalectual of the Quarter – Technology, Annalect India (Apr 2025) - awarded for consistent, exceptional performance',
+    'On the Spot Award, Annalect India (Aug 2025) - recognized for delivering exceptional performance',
+    'On the Spot Award, Omnicom Global Solutions (Feb 2026) - recognized for exceptional performance and dedication',
   ],
 };
 
@@ -253,17 +226,17 @@ export const Resume = () => {
             </div>
           </div>
 
-          {/* Professional Summary */}
+          {/* Profile Summary */}
           <section className='mb-4'>
-            <SectionHeader>Professional Summary</SectionHeader>
+            <SectionHeader>Profile Summary</SectionHeader>
             <p className='text-sm leading-relaxed text-neutral-800'>
               {profile.summary}
             </p>
           </section>
 
-          {/* Core Competencies */}
+          {/* Technical Skills */}
           <section className='mb-4'>
-            <SectionHeader>Core Competencies</SectionHeader>
+            <SectionHeader>Technical Skills</SectionHeader>
             <div className='space-y-1'>
               {Object.entries(profile.skills).map(([category, items]) => (
                 <p
@@ -279,9 +252,9 @@ export const Resume = () => {
             </div>
           </section>
 
-          {/* Professional Experience */}
+          {/* Work Experience */}
           <section className='mb-4'>
-            <SectionHeader>Professional Experience</SectionHeader>
+            <SectionHeader>Work Experience</SectionHeader>
             {profile.experience.map((job, i) => (
               <div key={i}>
                 <div className='flex items-baseline justify-between flex-wrap gap-x-2'>
@@ -321,10 +294,10 @@ export const Resume = () => {
             ))}
           </section>
 
-          {/* Key Projects */}
+          {/* Personal Projects */}
           <section className='mb-4'>
-            <SectionHeader>Key Projects</SectionHeader>
-            <ul className='space-y-0.5'>
+            <SectionHeader>Personal Projects</SectionHeader>
+            <ul className='space-y-2'>
               {profile.projects.map((project, i) => (
                 <li
                   key={i}
@@ -342,28 +315,17 @@ export const Resume = () => {
             </ul>
           </section>
 
-          {/* Education */}
+          {/* Certification */}
           <section className='mb-4'>
-            <SectionHeader>Education</SectionHeader>
-            <div className='flex items-baseline justify-between flex-wrap gap-x-2'>
-              <p className='text-sm font-bold text-neutral-900'>
-                {profile.education.institution}
-              </p>
-              <p className='text-sm font-bold text-neutral-900'>
-                {profile.education.period}
-              </p>
-            </div>
-            <p className='text-sm italic text-neutral-800'>
-              {profile.education.degree}
-            </p>
-            <p className='text-sm text-neutral-800 mt-1'>
-              {profile.education.note}
+            <SectionHeader>Certification</SectionHeader>
+            <p className='text-sm leading-relaxed text-neutral-800'>
+              {profile.certifications.join(' | ')}
             </p>
           </section>
 
-          {/* Achievements */}
+          {/* Awards & Recognition */}
           <section className='mb-4'>
-            <SectionHeader>Achievements</SectionHeader>
+            <SectionHeader>Awards & Recognition</SectionHeader>
             <ul className='space-y-0.5'>
               {profile.achievements.map((a, i) => (
                 <li
@@ -377,20 +339,20 @@ export const Resume = () => {
             </ul>
           </section>
 
-          {/* Languages */}
+          {/* Education */}
           <section>
-            <SectionHeader>Languages</SectionHeader>
-            <div className='space-y-0.5'>
-              {profile.languages.map((l, i) => (
-                <p
-                  key={i}
-                  className='text-sm text-neutral-800'
-                >
-                  <span className='font-bold text-neutral-900'>{l.name}</span> –{' '}
-                  {l.level}
-                </p>
-              ))}
+            <SectionHeader>Education</SectionHeader>
+            <div className='flex items-baseline justify-between flex-wrap gap-x-2'>
+              <p className='text-sm font-bold text-neutral-900'>
+                {profile.education.institution}
+              </p>
+              <p className='text-sm font-bold text-neutral-900'>
+                {profile.education.period}
+              </p>
             </div>
+            <p className='text-sm italic text-neutral-800'>
+              {profile.education.degree}
+            </p>
           </section>
         </div>
       </div>
